@@ -22,7 +22,7 @@ public class Results extends AppCompatActivity {
         String totaltime = i.getStringExtra("TimeTook");
         String correctness = i.getStringExtra("AnswerGotCorrect");
 
-        score.setText("You score was: " + correctness + " /10");
+        score.setText("You score was: " + correctness + "/10");
 
         float totalTime = Integer.parseInt(totaltime);
         float Average = totalTime/10;

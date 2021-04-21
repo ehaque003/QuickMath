@@ -22,14 +22,14 @@ public class Results extends AppCompatActivity {
         String totaltime = i.getStringExtra("TimeTook");
         String correctness = i.getStringExtra("AnswerGotCorrect");
 
-        score.setText("You score was: " + correctness + "/10");
+        score.setText("You score was " + correctness + "/10");
 
         float totalTime = Integer.parseInt(totaltime);
         float Average = totalTime/10;
         String average = String.valueOf(Average);
 
-        TotalTimeText.setText("Your time was: " + totaltime + " seconds");
-        AverageText.setText("Your average time was: " + average + " seconds");
+        TotalTimeText.setText("Your time was " + totaltime + " seconds");
+        AverageText.setText("Your average time was " + average + " seconds");
 
 
         Button b = findViewById(R.id.back);

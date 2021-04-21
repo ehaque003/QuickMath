@@ -6,4 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".Results">
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font2"
+        android:text="Quikmath"
+        android:textColor="#4A677A"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#855A5A"
+        android:scaleX="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135"
+        app:srcCompat="@android:drawable/bottom_bar"
+        app:tint="#334A55" />
+
+    <TextView
+        android:id="@+id/totalTime"
+        android:layout_width="300dp"
+        android:layout_height="108dp"
+        android:fontFamily="@font/font1"
+        android:gravity="center"
+        android:text="Your time was:"
+        android:textColor="#4A677A"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.075" />
+
+    <TextView
+        android:id="@+id/average"
+        android:layout_width="362dp"
+        android:layout_height="114dp"
+        android:fontFamily="@font/font1"
+        android:gravity="center"
+        android:text="Your average was:"
+        android:textColor="#4A677A"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalTime"
+        app:layout_constraintVertical_bias="0.124" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="362dp"
+        android:layout_height="114dp"
+        android:fontFamily="@font/font1"
+        android:gravity="center"
+        android:text="Your score was:"
+        android:textColor="#4A677A"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/average"
+        app:layout_constraintVertical_bias="0.209" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#4A677A"
+        android:fontFamily="@font/font2"
+        android:text="Home"
+        android:textColor="#374C5A"
+        android:textSize="45sp"
+        app:backgroundTint="#4A677A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score" />
 </androidx.constraintlayout.widget.ConstraintLayout>

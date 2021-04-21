@@ -40,7 +40,7 @@ public class Questions extends AppCompatActivity {
                         if(userinput==correctanswer){
                             Toast.makeText(getApplicationContext(), "You got correct.", Toast.LENGTH_LONG).show();
                             ++answergotcorrect;
-                            if(questionsanswered<10){
+                            if(questionsanswered<9){
                                 ++questionsanswered;
                                 Handler handler = new Handler();
                                 handler.post(runnable);
@@ -48,14 +48,14 @@ public class Questions extends AppCompatActivity {
                             else{
                                 Intent intent1 = new Intent(Questions.this, Results.class);
                                 intent1.putExtra("AnswerGotCorrect", answergotcorrect+"");
-                                intent1.putExtra("TimeTook", ((starttime-System.currentTimeMillis())/1000)+"");
+                                intent1.putExtra("TimeTook", ((System.currentTimeMillis()-starttime)/1000)+"");
                                 startActivity(intent1);
                             }
 
                         }
                         else{
                             Toast.makeText(getApplicationContext(), "You got incorrect.", Toast.LENGTH_LONG).show();
-                            if(questionsanswered<10){
+                            if(questionsanswered<9){
                                 ++questionsanswered;
                                 Handler handler = new Handler();
                                 handler.post(runnable);
@@ -63,7 +63,7 @@ public class Questions extends AppCompatActivity {
                             else{
                                 Intent intent1 = new Intent(Questions.this, Results.class);
                                 intent1.putExtra("AnswerGotCorrect", answergotcorrect+"");
-                                intent1.putExtra("TimeTook", ((starttime-System.currentTimeMillis())/1000)+"");
+                                intent1.putExtra("TimeTook", ((System.currentTimeMillis()-starttime)/1000)+"");
                                 startActivity(intent1);
                             }
                         }

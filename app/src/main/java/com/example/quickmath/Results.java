@@ -9,16 +9,13 @@ import android.widget.Button;
 import android.widget.*;
 
 public class Results extends AppCompatActivity {
-//    TextView totalTime = findViewById(R.id.totalTime);
-//    TextView average = findViewById(R.id.average);
-//    TextView score = findViewById(R.id.score);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-
-
+        TextView totalTime = findViewById(R.id.totalTime);
+        TextView average = findViewById(R.id.average);
+        TextView score = findViewById(R.id.score);
         Button b = findViewById(R.id.back);
         b.setOnClickListener(new View.OnClickListener() {
             @Override

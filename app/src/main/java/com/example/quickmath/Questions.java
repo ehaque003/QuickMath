@@ -20,43 +20,62 @@ public class Questions extends AppCompatActivity {
     Button submit;
     TextView equation;
     EditText answer;
-    boolean isNotClicked = true;
     int answergotcorrect = 0;
+    int questionsanswered = 0;
+    long starttime;
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
             Intent intent = getIntent();
             String difficultylevel = intent.getStringExtra("Difficulty_level");
-            long starttime = System.currentTimeMillis();
-            for(int i = 0; i<=10; ++i){
-                Problem problem = new Problem(difficultylevel);
-                equation.setText(problem.getEquation());
-                submit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
+            Problem problem = new Problem(difficultylevel);
+            equation.setText(problem.getEquation());
+            answer.setText("");
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try{
                         int userinput = Integer.parseInt(answer.getText()+"");
                         int correctanswer = problem.getResult();
                         if(userinput==correctanswer){
                             Toast.makeText(getApplicationContext(), "You got correct.", Toast.LENGTH_LONG).show();
                             ++answergotcorrect;
+                            if(questionsanswered<10){
+                                ++questionsanswered;
+                                Handler handler = new Handler();
+                                handler.post(runnable);
+                            }
+                            else{
+                                Intent intent1 = new Intent(Questions.this, Results.class);
+                                intent1.putExtra("AnswerGotCorrect", answergotcorrect+"");
+                                intent1.putExtra("TimeTook", ((starttime-System.currentTimeMillis())/1000)+"");
+                                startActivity(intent1);
+                            }
+
                         }
                         else{
                             Toast.makeText(getApplicationContext(), "You got incorrect.", Toast.LENGTH_LONG).show();
+                            if(questionsanswered<10){
+                                ++questionsanswered;
+                                Handler handler = new Handler();
+                                handler.post(runnable);
+                            }
+                            else{
+                                Intent intent1 = new Intent(Questions.this, Results.class);
+                                intent1.putExtra("AnswerGotCorrect", answergotcorrect+"");
+                                intent1.putExtra("TimeTook", ((starttime-System.currentTimeMillis())/1000)+"");
+                                startActivity(intent1);
+                            }
                         }
-                        isNotClicked = false;
+                    } catch (NumberFormatException numberFormatException){
+                        Toast.makeText(getApplicationContext(), "You submitted something else than a number. Please input a number.", Toast.LENGTH_LONG).show();
                     }
-                });
+                }
+            });
 
-
-            }
-            String elaspetime = (System.currentTimeMillis()-starttime)+"";
-//            Intent intent1 = new Intent(Questions.this, Results.class);
-//            intent1.putExtra("Timetook", elaspetime);
-//            intent1.putExtra("GotCorrectNum", answergotcorrect+"");
-//            startActivity(intent1);
         }
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +91,10 @@ public class Questions extends AppCompatActivity {
                 start.setVisibility(View.INVISIBLE);
                 answer.setVisibility(View.VISIBLE);
                 submit.setVisibility(View.VISIBLE);
+                starttime = System.currentTimeMillis();
                 Handler handler = new Handler();
                 handler.post(runnable);
+
             }
         });
 

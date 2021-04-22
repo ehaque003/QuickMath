@@ -6,40 +6,89 @@ public class Problem {
     String equation;
     int firstNum;
     int secomdNum;
+    int firstMediumNum;
+    int secondMediumNum;
+    int firstHardNum;
+    int secondHardNum;
+    int firstMediumSimpleNum;
+    int secondMediumSimpleNum;
+    int firstHardSimpleNum;
+    int secondHardSimpleNum;
     int result;
     char op;
     char[] opArray = {'+', '-', '*', '/'};
-    public Problem(String level){
+    String level;
+    public Problem(String Level){
         int multiplier = 1;
-        if (level.equalsIgnoreCase("medium")) {
+        level = "medium";
+        if (Level.equalsIgnoreCase("easy")) {
             multiplier = 10;
-        } else if (level.equalsIgnoreCase("hard")) {
+            level = "easy";
+        } else if (Level.equalsIgnoreCase("hard")) {
             multiplier = 100;
+            level = "hard";
         }
 
         int limit = 10 * multiplier;
+        int floor = multiplier;
 
-        Random rnd = new Random();
-        Random rnd2 = new Random();
         Random oprnd = new Random();
-        firstNum = rnd.nextInt(limit);
-        secomdNum = rnd2.nextInt(limit);
+        firstNum = (int)Math.floor(Math.random()*(10 - 0 + 1) + 0);
+        secomdNum = (int)Math.floor(Math.random()*(10 - 0 + 1) + 0);
+        secondMediumNum = (int)Math.floor(Math.random()*(20 - 10 + 1) + 10);
+        firstMediumNum = (int)Math.floor(Math.random()*(20 - 10 + 1) + 10);
+        firstHardNum = (int)Math.floor(Math.random()*(100 - 30 + 1) + 30);
+        secondHardNum = (int)Math.floor(Math.random()*(100 - 30 + 1) + 30);
+        firstMediumSimpleNum = (int)Math.floor(Math.random()*(100 - 10 + 1) + 10);
+        secondMediumSimpleNum = (int)Math.floor(Math.random()*(100 - 10 + 1) + 10);
+        firstHardSimpleNum = (int)Math.floor(Math.random()*(1000 - 100 + 1) + 100);
+        secondHardSimpleNum = (int)Math.floor(Math.random()*(1000 - 10 + 1) + 100);
         op = opArray[oprnd.nextInt(3)];
         result = calcResult();
     }
     private int calcResult() {
         if(op=='+'){
-            result=firstNum+secomdNum;
+            if(level == "easy"){
+                result = firstNum + secomdNum;
+            }else if(level == "medium"){
+                result = firstMediumSimpleNum + secondMediumSimpleNum;
+            }else if(level == "hard"){
+                result = firstHardSimpleNum + secondHardSimpleNum;
+            }
         } else if(op=='-'){
-            result=firstNum-secomdNum;
+            if(level == "easy"){
+                result = firstNum - secomdNum;
+            }else if(level == "medium"){
+                result = firstMediumSimpleNum - secondMediumSimpleNum;
+            }else if(level == "hard"){
+                result = firstHardSimpleNum - secondHardSimpleNum;
+            }
         } else if(op=='*'){
-            result=firstNum*secomdNum;
+            if(level == "easy") {
+                result = firstNum * secomdNum;
+            } else if(level == "medium"){
+                result = firstMediumNum * secondMediumNum;
+            } else if(level == "hard"){
+                result = firstHardNum * secondHardNum;
+            }
         } else if(op=='/'){
             if(!((firstNum/secomdNum)%1==0)){
-                result = firstNum/secomdNum;
+                if(level == "easy"){
+                    result = firstNum/secomdNum;
+                }else if(level == "medium"){
+                    result = firstMediumNum/secondMediumNum;
+                }else if(level == "hard"){
+                    result = firstHardNum/secondHardNum;
+                }
             }
             else{
-                result = firstNum*secomdNum;
+                if(level == "easy"){
+                    result = firstNum*secomdNum;
+                }else if(level == "medium"){
+                    result = firstMediumNum*secondMediumNum;
+                }else if(level == "hard"){
+                    result = firstHardNum * secondHardNum;
+                }
             }
         }
         return result;
@@ -48,17 +97,49 @@ public class Problem {
 
     public String getEquation() {
         if(op=='+'){
-            equation = firstNum+" + "+secomdNum;
+            if(level == "easy"){
+                equation = firstNum+" + "+secomdNum;
+            }else if(level == "medium"){
+                equation = firstMediumSimpleNum+" + "+secondMediumSimpleNum;
+            }else if(level == "hard"){
+                equation = firstHardSimpleNum+" + "+secondHardSimpleNum;
+            }
         } else if(op=='-'){
-            equation = firstNum+" - "+secomdNum;
+            if(level == "easy"){
+                equation = firstNum+" - "+secomdNum;
+            }else if(level == "medium"){
+                equation = firstMediumSimpleNum+" - "+secondMediumSimpleNum;
+            }else if(level == "hard"){
+                equation = firstHardSimpleNum+" - "+secondHardSimpleNum;
+            }
         } else if(op=='*'){
-            equation = firstNum+" * "+secomdNum;
+            if(level == "easy"){
+                equation = firstNum+" * "+secomdNum;
+            }else if(level == "medium"){
+                equation = firstMediumNum + " * " + secondMediumNum;
+            }else if(level == "hard"){
+                equation = firstHardNum + " * " + secondHardNum;
+            }
+
         } else if(op=='*') {
             if(!((firstNum/secomdNum)%1==0)){
-                equation = firstNum+" / "+secomdNum;
+                if(level == "easy"){
+                    equation = firstNum+" / "+secomdNum;
+                }else if(level == "medium"){
+                    equation = firstMediumNum+" / "+secondMediumNum;
+                }else if(level == "hard"){
+                    equation = firstHardNum+" / "+secondHardNum;
+                }
+
             }
             else{
-                equation = firstNum+" * "+secomdNum;
+                if(level == "easy"){
+                    equation = firstNum+" * "+secomdNum;
+                }else if(level == "medium"){
+                    equation = firstMediumNum + " * " + secondMediumNum;
+                }else if(level == "hard"){
+                    equation = firstHardNum + " * " + secondHardNum;
+                }
             }
         }
         return equation;

@@ -24,7 +24,7 @@ public class Results extends AppCompatActivity {
         score.setText("You score was " + correctness + "/10");
         TotalTimeText.setText("Your time was " + totaltime + " seconds");
         int performerscore = 100;
-        if(correctness == "0"){
+        if(!(correctness.equals("0"))){
             performerscore = (Math.round(Integer.parseInt(totaltime)/Integer.parseInt(correctness)));
         }
         if (performerscore < 5) {

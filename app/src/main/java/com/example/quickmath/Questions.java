@@ -29,8 +29,8 @@ public class Questions extends AppCompatActivity {
         @Override
         public void run() {
             Intent intent = getIntent();
-            String difficultylevel = intent.getStringExtra("Difficulty_level");
-            Problem problem = new Problem(difficultylevel);
+            String difficultylevel2 = intent.getStringExtra("Difficulty_level");
+            Problem problem = new Problem(difficultylevel2);
             equation.setText(problem.getEquation());
             answer.setText("0");
             submit.setOnClickListener(new View.OnClickListener() {
